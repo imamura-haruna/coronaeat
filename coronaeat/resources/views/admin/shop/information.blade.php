@@ -2,20 +2,20 @@
 @extends('layouts.admin')
 
 
-{{-- admin.blade.phpの@yield('title')に'アカウント消去'を埋め込む --}}
-@section('title', 'アカウント消去')
+{{-- admin.blade.phpの@yield('title')に'アカウント'を埋め込む --}}
+@section('title', 'アカウント')
 
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>タイトル</h2>
+                <h2>{{$user->User::name}}</h2>
             </div>
         </div>
     </div>
     <div class="btn-group">
-    	<input type="button" class="btn btn-yes" value="アカウントを消去する">
-    	<input type="button" class="btn btn-no" value="ショップページへ戻る">
+    	<input type="submit" class="btn btn-edit" value="変更">
+    	<input type="submit" class="btn btn-delete" value="アカウントの消去">
 	</div>
 @endsection

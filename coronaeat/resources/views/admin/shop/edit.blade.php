@@ -2,7 +2,7 @@
 @extends('layouts.admin')
 
 
-{{-- admin.blade.phpの@yield('title')に'ショップ編'を埋め込む --}}
+{{-- admin.blade.phpの@yield('title')に'ショップ編集を埋め込む --}}
 @section('title', 'ショップ編集')
 
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
@@ -15,11 +15,7 @@
         </div>
     </div>
     <div class="btn-group">
-    	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    		消去
-    	</button>
-    	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    		登録
-    	</button>
+    	<input type="submit" class="btn btn-delete" value="消去">
+    	<input type="submit" class="btn btn-registration" value="登録">
 	</div>
 @endsection

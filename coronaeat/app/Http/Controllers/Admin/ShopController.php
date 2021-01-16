@@ -9,12 +9,12 @@ class ShopController extends Controller
 {
     public function add()
     {
-      return view('admin.shop');
+      return view('admin.shop.information');
     }
     
     public function show()
     {
-      return view('admin.shop');
+      return view('admin.shop.information');
     }
     
     public function edit()
