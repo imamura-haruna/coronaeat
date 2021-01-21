@@ -10,6 +10,7 @@ class Image extends Model
 
     
     public static $rules = array(
+        //'required'は'入力必須'というバリテーション
         'user_id' => 'required',
         'title' => 'required',
         'body' => 'required',

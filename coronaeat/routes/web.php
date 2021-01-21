@@ -20,9 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //ログインボタン、NOボタン
-Route::get('admin/shop/','Admin\ShopController@show')->middleware('auth');
+Route::get('admin/shop/information','Admin\ShopController@show')->middleware('auth');
 //登録ボタン
-Route::post('admin/shop/','Admin\ShopController@add')->middleware('auth');
+Route::post('admin/shop/information','Admin\ShopController@add')->middleware('auth');
 //変更ボタン
 Route::get('admin/shop/edit','Admin\ShopController@edit')->middleware('auth');
 //消去ボタン

@@ -4,18 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// 以下各Modelが扱えるようになる
+use App\User;
+use App\Image;
+use App\Checkbox;
 
 class ShopController extends Controller
 {
-    public function add()
+    //Requestクラス：ブラウザを通してユーザーから送られる情報をすべて含んでいるオブジェクトを取得することができる
+    //$requestに代入して使用する
+    public function add(Request $request)
     {
-      return view('admin.shop.information');
+      //post時はredirect
+      return redirect('admin/shop/information');
     }
     
     public function show()
     {
       return view('admin.shop.information');
     }
+    
     
     public function edit()
     {
@@ -24,7 +32,7 @@ class ShopController extends Controller
     
     public function delete()
     {
-      return view('admin.shop.edit');
+      return redirect('admin/shop/edit');
     }
     
     public function choice()
@@ -34,7 +42,7 @@ class ShopController extends Controller
     
     public function login()
     {
-      return view('admin.shop.login');
+      return redirect('auth/login');
     }
     
     public function create()

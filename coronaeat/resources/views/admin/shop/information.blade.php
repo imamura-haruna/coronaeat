@@ -10,12 +10,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>{{$user->User::name}}</h2>
+                <h2>アカウント</h2>
+                <div class="btn-group">
+                    <form action="{{ action('Admin\ShopController@edit') }}" method="get">
+                        <input type="submit" class="btn btn-edit" value="変更">
+                    </form>
+                	<form action="{{ action('Admin\ShopController@choice') }}" method="get">
+                	    <input type="submit" class="btn btn-delete" value="アカウントの消去">
+                	</form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="btn-group">
-    	<input type="submit" class="btn btn-edit" value="変更">
-    	<input type="submit" class="btn btn-delete" value="アカウントの消去">
-	</div>
+    
 @endsection

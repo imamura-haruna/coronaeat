@@ -10,11 +10,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>タイトル</h2>
+                <h2>新規作成</h2>
+                <div class="btn-group">
+                    <form action="{{ action('Admin\ShopController@add') }}" method="post">
+                        <input type="submit" class="btn btn-newshop" value="ショップの登録">
+                    </form>
+            	</div>
             </div>
         </div>
     </div>
-    <div class="btn-group">
-    	<input type="submit" class="btn btn-newshop" value="ショップの登録">
-	</div>
+    
 @endsection
