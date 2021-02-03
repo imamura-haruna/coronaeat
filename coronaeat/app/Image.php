@@ -13,6 +13,6 @@ class Image extends Model
         //'required'は'入力必須'というバリテーション
         'user_id' => 'required',
         'title' => 'required',
-        'body' => 'required',
+        'shop_image' => 'required',
     );
 }
