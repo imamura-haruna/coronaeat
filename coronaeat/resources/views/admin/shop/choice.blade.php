@@ -9,16 +9,44 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                <h2>アカウント消去</h2>
-                <div class="btn-group">
-                    <form action="{{ action('Admin\ShopController@login') }}" method="post">
-                        <input type="button" class="btn btn-yes" value="アカウントを消去する">
-                    </form>
-                    <form action="{{ action('Admin\ShopController@show') }}" method="get">
-                        <input type="button" class="btn btn-no" value="ショップページへ戻る">
-                    </form>
+            <div class="col-md-12 mx-auto row">
+                <p>
+                  <div style="margin-bottom:50px"></div>
+                </p>
+            </div>
+            <div class="col-md-12 mx-auto">
+                <div class="col-md-2 mx-auto">
+                        
                 </div>
+                <div class="col-md-8 mx-auto">
+                    <div class="card" style="padding:20px;">
+                        <div class="card-body">
+                            <p class="card-text">
+                                アカウントを消去する場合は<span class="badge badge-primary">はい</span>のボタンを
+                                <br>押してください。
+                            </p>
+                            <div class="btn-group">
+                                <form action="{{ action('Admin\ShopController@yes') }}" method="post">
+                                    <input type="button" class="btn btn-primary" value="はい">
+                                </form>
+                                <div class="col-md-2">
+                            
+                                </div>
+                                <a href="{{ action('Admin\ShopController@show') }}" method="get">
+                                    <input type="button" class="btn btn-primary" value="ショップページへ戻る">
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-md-2 mx-auto">
+                        
+                </div>
+            </div>
+            <div class="col-md-12 mx-auto row">
+                <p>
+                  <div style="margin-bottom:500px"></div>
+                </p>
             </div>
         </div>
     </div>

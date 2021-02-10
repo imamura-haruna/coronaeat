@@ -10,19 +10,32 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="row">
-                    <h2>アカウント</h2>
+                    <h2>アカウント設定</h2>
+                    <div class="col-md-12 mx-auto row">
+                        <p>
+                          <div style="margin-bottom:10px"></div>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4>ようこそ {{ $user->name }} さん</h4>
+                    <div class="col-md-12 mx-auto row">
+                        <p>
+                          <div style="margin-bottom:10px"></div>
+                        </p>
+                    </div>
                 </div>
                     {{-- 送信するファイルのタイプ --}}
-                <form action="{{ action('Admin\ShopController@add') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ action('Admin\ShopController@update') }}" method="post" enctype="multipart/form-data">
                     <div class="user">
-                        <div class="form-group col-md-12 mx-auto row">
-                            <label for="inputEmail" class="col-form-label">Email</label>
-                            <input type="email" class="form-control" value="{{ $user->email }}" name="email" placeholder="Email">
-                        </div>
-                        <div class="form-group col-md-12 mx-auto row">
-                            <label for="inputPassword" class="col-form-label">Password</label>
-                            <input type="Password" class="form-control" value="{{ $user->password }}" name="password" placeholder="Password">
-                        </div>
+                        <!--<div class="form-group col-md-12 mx-auto row">-->
+                            <!--<label for="inputEmail" class="col-form-label">Email</label>-->
+                            <!--<input type="email" class="form-control" value="{{ $user->email }}" name="email" placeholder="Email">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-12 mx-auto row">-->
+                            <!--<label for="inputPassword" class="col-form-label">Password</label>-->
+                            <!--<input type="Password" class="form-control" value="{{ $user->password }}" name="password" placeholder="Password">-->
+                        <!--</div>-->
                         <div class="form-group col-md-12 mx-auto row">
                             <label for="location">アクセス</label>
                             <div class="col-md-8"></div>
@@ -108,56 +121,58 @@
                             <h5>衛生チェック</h5><p>（当てはまる項目にチェックを入れてください）</p>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            {{-- ->名称 のようにアロー演算子を利用してアクセスするのはオブジェクトのプロパティ。all()メソッドはオブジェクトを配列として返す為valueはこのようになる --}}
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" value="{{ $checkbox['checkbox1'] }}">
+                            {{-- ->名称 のようにアロー演算子を利用してアクセスするのはオブジェクトのプロパティ。all()メソッドはオブジェクトを配列として返す為valueは[]このようになる --}}
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" value="{{ $checkbox['checkbox1'] }}" name="date">
                             <label class="custom-control-label" for="customCheck1">店内は、厚生労働省推奨の換気・保湿を実施しています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" value="{{ $checkbox['checkbox2'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" value="{{ $checkbox['checkbox2'] }}" name="date">
                             <label class="custom-control-label" for="customCheck2">カウンター席は、パーテーションを設置しています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3" value="{{ $checkbox['checkbox3'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck3" value="{{ $checkbox['checkbox3'] }}" name="date">
                             <label class="custom-control-label" for="customCheck3">テーブル席は、パーテーションを設置しています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck4" value="{{ $checkbox['checkbox4'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck4" value="{{ $checkbox['checkbox4'] }}" name="date">
                             <label class="custom-control-label" for="customCheck4">使用後の座席は、アルコール消毒をしています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck5" value="{{ $checkbox['checkbox5'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck5" value="{{ $checkbox['checkbox5'] }}" name="date">
                             <label class="custom-control-label" for="customCheck5">使用後のテーブルは、アルコール消毒をしています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck6" value="{{ $checkbox['checkbox6'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck6" value="{{ $checkbox['checkbox6'] }}" name="date">
                             <label class="custom-control-label" for="customCheck6">従業員は、出勤・退勤時のアルコール消毒をしています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck7" value="{{ $checkbox['checkbox7'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck7" value="{{ $checkbox['checkbox7'] }}" name="date">
                             <label class="custom-control-label" for="customCheck7">従業員は勤務中、マスクを着用しています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck8" value="{{ $checkbox['checkbox8'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck8" value="{{ $checkbox['checkbox8'] }}" name="date">
                             <label class="custom-control-label" for="customCheck8">従業員の体温・体調管理を徹底しています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck9" value="{{ $checkbox['checkbox9'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck9" value="{{ $checkbox['checkbox9'] }}" name="date">
                             <label class="custom-control-label" for="customCheck">お客様に、入口にて検温のご協力をお願いしています</label>
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" class="custom-control-input" id="customCheck10" value="{{ $checkbox['checkbox10'] }}">
+                            <input type="checkbox" class="custom-control-input" id="customCheck10" value="{{ $checkbox['checkbox10'] }}" name="date">
                             <label class="custom-control-label" for="customCheck10">お客様に、入店・退店時のアルコール消毒にご協力をお願いしています</label>
                         </div>
                         <div class="col-md-12 mx-auto row">
-                        <p>
-                          <div style="margin-bottom:10px"></div>
-                        </p>
+                            <p>
+                              <div style="margin-bottom:50px"></div>
+                            </p>
+                        </div>
                     </div>
-                    </div>
-                    <div class="col-md-12 mx-auto row">
-                        <p>
-                          <div style="margin-bottom:50px"></div>
-                        </p>
+                    <div class="row">
+                        <div class="col-md-12 mx-auto row">
+                            <p>
+                              <div style="margin-bottom:50px"></div>
+                            </p>
+                        </div>
                     </div>
                     <div class="images border" style="padding:30px;">
                         <div class="custom-checkbox col-md-12 mx-auto row">
@@ -167,68 +182,74 @@
                             <div class="form-group">
                                 <div class="border" style="padding:10px;">
                                     @foreach($images as $image)
-                                    <div class="col-md-10">
-                                        <div class="form-group row">
-                                            <label class="col-md-2" for="title">タイトル</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" name="title" value="{{ $news_form->title }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2" for="image">画像</label>
-                                            <div class="col-md-10">
-                                                <input type="file" class="form-control-file" name="image">
-                                                <div class="form-text text-info">
-                                                    設定中: {{ $news_form->image_path }}
-                                                </div>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-10">
-                                                <input type="hidden" name="id" value="{{ $news_form->id }}">
-                                                {{ csrf_field() }}
-                                                <input type="submit" class="btn btn-primary" value="更新">
-                                            </div>
-                                        </div>
+                                    <div class="card col-md-11">
                                         @if ($image->shop_image)
                                             {{-- DBでは画像をパスでしか保存ができない。なので画像が格納されている場所をURLにして表示する --}}
-                                            <img src="{{ asset('storage/image/' . $image->shop_image) }}">
+                                            <img class="card-img-top img-thumbnail" src="{{ asset('storage/image/' . $image->shop_image) }}" alt="Card image cap">
                                         @endif
-                                        <input type="file" class="form-control-file" name="image" src="{{ $image->shop_image }}">
-                                        <p class="card-text">{{ $image->title }}</p>   
+                                        <input type="file" class="form-control-file" name="image">
+                                        <div class="card-body">
+                                            <input type="text" class="form-control" name="title" placeholder="設定中：{{ $image->title }}">
+                                        </div>
+                                        {{-- <div class="col-md-10">--}}
+                                            {{--<div class="form-group row">--}}
+                                                {{--<label class="col-md-2" for="title">タイトル</label>--}}
+                                                {{--<div class="col-md-10">--}}
+                                                    {{--<input type="text" class="form-control" name="title" value="{{ $image->title }}">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="form-group row">--}}
+                                                {{--<label class="col-md-2" for="image">画像</label>--}}
+                                                {{--<div class="col-md-10">--}}
+                                                    {{--@if ($image->shop_image)--}}
+                                                        {{-- DBでは画像をパスでしか保存ができない。なので画像が格納されている場所をURLにして表示する --}}
+                                                        {{--<img src="{{ asset('storage/image/' . $image->shop_image) }}">--}}
+                                                    {{--@endif--}}
+                                                    {{--<input type="file" class="form-control-file" name="image">--}}
+                                                    {{--<div class="form-text text-info">--}}
+                                                        {{--設定中: {{ $image->image_path }}--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div> --}}
+                                        <div class="form-group row justify-content-center">
+                                            <div class="">
+                                                <input type="hidden" name="id" value="{{ $image->id }}">
+                                                {{ csrf_field() }}
+                                                <input type="submit" class="btn btn-sm" value="更新">
+                                            </div>
+                                            <div class="">
+                                                <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="col-md-12 mx-auto row">
+                                        <p>
+                                          <div style="margin-bottom:50px"></div>
+                                        </p>
                                     </div>
                                     @endforeach 
                                 </div>   
                             </div>  
                         </div>
                     </div>
-                    <div class="col-md-12 mx-auto row">
-                        <p>
-                          <div style="margin-bottom:50px"></div>
-                        </p>
+                    <div class="row">
+                        <div class="col-md-12 mx-auto row">
+                            <p>
+                              <div style="margin-bottom:50px"></div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="btn-group justify-content-center">
+                        <div class="custom-checkbox col-md-12 mx-auto row">
+                            <input type="submit" class="btn btn-add" value="登録">
+                        </div>
                     </div>
                 </form>
             </div>   
         </div>
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <div class="btn-group">
-                    <form action="{{ action('Admin\ShopController@delete') }}" method="post">
-                        <input type="submit" class="btn btn-delete" value="消去"> 
-                    </form>
-                    <div class="col-md-2">
-                        
-                    </div>
-                    <form action="{{ action('Admin\ShopController@show') }}" method="get">
-                        {{ csrf_field() }}
-                        <input type="submit" class="btn btn-add" value="登録">
-                    </form>
-                </div>
+                
             </div>
         </div>
         <div class="col-md-12 mx-auto row">

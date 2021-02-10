@@ -11,8 +11,9 @@ class Image extends Model
     
     public static $rules = array(
         //'required'は'入力必須'というバリテーション
-        'user_id' => 'required',
+        //viewからControllerに渡す内容
+        //'user_id' => 'required',
         'title' => 'required',
-        'shop_image' => 'required',
+        'image' => 'required',
     );
 }

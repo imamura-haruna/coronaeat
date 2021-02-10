@@ -16,16 +16,16 @@ class CreateCheckboxesTable extends Migration
         Schema::create('checkboxes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('checkbox1');
-            $table->integer('checkbox2');
-            $table->integer('checkbox3');
-            $table->integer('checkbox4');
-            $table->integer('checkbox5');
-            $table->integer('checkbox6');
-            $table->integer('checkbox7');
-            $table->integer('checkbox8');
-            $table->integer('checkbox9');
-            $table->integer('checkbox10');
+            $table->integer('checkbox1')->nullable();
+            $table->integer('checkbox2')->nullable();
+            $table->integer('checkbox3')->nullable();
+            $table->integer('checkbox4')->nullable();
+            $table->integer('checkbox5')->nullable();
+            $table->integer('checkbox6')->nullable();
+            $table->integer('checkbox7')->nullable();
+            $table->integer('checkbox8')->nullable();
+            $table->integer('checkbox9')->nullable();
+            $table->integer('checkbox10')->nullable();
             $table->timestamps();
         });
     }

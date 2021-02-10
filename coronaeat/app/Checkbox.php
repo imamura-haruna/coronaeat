@@ -11,7 +11,7 @@ class Checkbox extends Model
     
     public static $rules = array(
         //'required'は'入力必須'というバリテーション
-        'user_id' => 'required',
+        //'user_id' => 'required',
         'checkbox1' => 'required',
         'checkbox2' => 'required',
         'checkbox3' => 'required',
