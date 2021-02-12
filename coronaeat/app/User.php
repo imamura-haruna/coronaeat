@@ -50,14 +50,19 @@ class User extends Authenticatable
     );
     
     
-    public function images()
+    public function shopimages()
     {
-      return $this->hasMany('App\Image');
+      return $this->hasMany('App\ShopImages');
     }
     
-    public function checkboxes()
+    public function question()
+    {
+      return $this->hasMany('App\question');
+    }
+    
+    /*public function checkboxes()
     {
       return $this->hasMany('App\Checkbox');
-    }
+    }*/
     
 }

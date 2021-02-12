@@ -8,83 +8,39 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Image;
 use App\Checkbox;
+use App\Question;
+use App\ShopImages;
 //edit アクションで使用
 use Auth;
 
 class ShopController extends Controller
 {
-    public function add(Request $request)
+    public function show(Request $request)
     {
-      //Userについて
-      // Validationをかける
-      $this->validate($request, User::$rules);
-      // News Modelからデータを取得する
-      $users = User::find($request->id);
-      // 送信されてきたフォームデータを格納する
-      $user = $request->all();
-      unset($user['_token']);
-      // 該当するデータを上書きして保存する
-      $users->fill($user)->save();
+      // 特定ユーザーの情報を取得（既ログイン者）
+      $user = Auth::user();
+      // get()を使用する場合の、ユーザー内データの取得。しかしviewで@if(Auth::user()->データを入れる変数名 != null
+      //$images = Image::where('id',$user->id)->get();
+      //$questions = Question::where('id',$user->id)->get();
+      //findでは配列を取得。
+      //$checkboxes = Checkbox::find($user->id);
       
-      //Checkboxについて
-      // Validationをかける
-      $this->validate($request, Checkbox::$rules);
-      // News Modelからデータを取得する
-      $checkboxes = Checkbox::find($request->id);
-      // 送信されてきたフォームデータを格納する
-      $checkbox = $request->all();
-      unset($checkbox['_token']);
-      // 該当するデータを上書きして保存する
-      $checkboxes->fill($checkbox)->save();
-      
-      
-      //Imageについて
-      // Validationをかける
-      $this->validate($request, Image::$rules);
-      // Image Modelからデータを取得する
-      $images = Image::find($request->id);
-      // 送信されてきたフォームデータを格納する
-      $image_form = $request->all();
-      if ($request->remove == 'true') {
-          $image_form['image_path'] = null;
-      } elseif ($request->file('image')) {
-          $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
-          $images->image_path = Storage::disk('s3')->url($path);
-      } else {
-          $image_form['image_path'] = $news->image_path;
-      }
-      unset($image_form['image']);
-      unset($image_form['remove']);
-      unset($image_form['_token']);
-      // 該当するデータを上書きして保存する
-      $image->fill($image_form)->save();
-      
-      //post時はredirect
-      return redirect('admin/shop/information',['images'=>$images,'checkboxes'=>$checkboxes]);
+      return view('admin.shop.information'/*,['images'=>$images,'questions'=>$questions]*/);
     }
     
-    public function new(Request $request)
+    public function createimage(Request $request)
     {
-      
       //Varidationを行う
-      $this->validate($request, Image::$rules);
+      // $this->validate($request, ShopImages::$rules);
+      $image = new ShopImages;
+      $form = $request->all();
       //dd($request);
       
-      $image = new Image;
-      $form = $request->all();
-      
-      //フォームから画像が送信されてきたら、保存して、$image->shop_image に画像パスを保存する
-      //if (isset($form['image'])) {
-      //  $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
-        // $image->shop_image = Storage::disk('s3')->url($path);
-      // } else {
-          // $image->shop_image = null;
-      // }
       if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
-        $image->shop_image = basename($path);
+        $image->image = basename($path);
       } else {
-          $image->shop_image = null;
+          $image->image = null;
       }
       $image->user_id = Auth::id();
       
@@ -95,109 +51,92 @@ class ShopController extends Controller
       
       //データベースに保存する
       $image->fill($form);
+      // dd($image,$form);
       $image->save();
-      $images = Image::all();
-      $checkboxes = Checkbox::all();
+      
+      // $images = ShopImages::all();
+      // $questions = question::all();
+      
+      //$checkboxes = Checkbox::all();
       //post時はredirect
-      return redirect('admin/shop/information',['images'=>$images,'checkboxes'=>$checkboxes]);
+      return redirect('admin/shop/information');
+      // 'checkboxes'=>$checkboxes
+      //'images'=>$images,['shopimages'=>$images,'questions'=>$questions]
     }
     
-    public function show(Request $request)
+    public function delete(Request $request)
     {
-      // 特定ユーザーの情報を取得（既ログイン者）
-      $user = Auth::user();
-      $images = Image::find($user->id);
+      $image = ShopImages::where('id');
+      // 削除する
+      dd($image);
+      $image->delete();
       
-      $checkboxes = Checkbox::find($user->id);
-      if($checkboxes!=""){
-        echo "clear";
-      }else{
-        echo "";
-      }
-      
-      //if(['checkbox'] != ''){
-        //echo "clear";
-      //}else{
-        //echo "";
-      //}
-      //if($checkboxes != ""){
-       // echo "clear";
-      //}else{
-      //  $checkboxes = null;
-      //}
-      
-      return view('admin.shop.information',['images'=>$images,'checkbox'=>$checkboxes]);
+      return redirect('admin/shop/information');
     }
     
     public function edit(Request $request)
     {
       // 特定ユーザーの情報を取得（既ログイン者）
       $user = Auth::user();
-      
-      $images=Image::all();
-      $checkboxes=Checkbox::find($request->id);
-      
-      return view('admin.shop.edit',['user'=>$user,'images'=>$images,'checkbox'=>$checkboxes]);
+      //$questions = Question::where('id',$user->id)->get();
+      //$images = ShopImages::find($request->id);
+      //$images=Image::all();
+      // $checkboxes=Checkbox::find($request->id);
+      $questions = Question::find($request->id);
+      //dd($images);
+      return view('admin.shop.edit',['user'=>$user/*,'images'=>$images*/,'question'=>$questions]);
     }
     
     public function update(Request $request)
     {
-        //Userについて
-        //ユーザー登録時にデフォルト値を入れているから、新規作成はしなくていい
-        // 特定ユーザーの情報を取得（既ログイン者）
-        $user = Auth::user();
-        //$userのプロパティにフォームから送られてきた情報を渡す
-        $user->update(); //更新
-        // 送信されてきたフォームデータを格納する
-        // $user = $request->all();
-        // unset($user['_token']);
-        // 該当するデータを上書きして保存する
-        // $users->fill($user)->save();
-        
-        //Checkboxについて
-        // 該当しない項目があるためValidationをかけない
-        //$this->validate($request, Checkbox::$rules);
-        // Chekbox Modelからデータを取得する
-        $checkboxes = Checkbox::find($request->id);
-        // 送信されてきたフォームデータを格納する
-        $checkbox = $request->all();
-        unset($checkbox['_token']);
-        // 該当するデータを上書きして保存する
-        $checkboxes->fill($checkbox);
-        $checkboxes->save();
-        
-        // Validationをかける
-        $this->validate($request, Image::$rules);
-        // News Modelからデータを取得する
-        $images = Image::find($request->id);
-        $image = $request->all();
-        // 送信されてきたフォームデータを格納する
-        if ($request->remove == 'true') {
-            $image['shop_image'] = null;
-        } elseif ($request->file('image')) {
-            $path = $request->file('image')->store('public/image');
-            $image['shop_image'] = basename($path);
-        } else {
-            $image['shop_image'] = $images->shop_image;
-        }
-        
-        unset($image['image']);
-        unset($image['remove']);
-        unset($image['_token']);
-        // 該当するデータを上書きして保存する
-        $images->fill($image)->save();
-          
-        return redirect('admin/shop/edit',['image'=>$images,'checkbox'=>$checkboxes]);
-    }
-    
-    public function delete(Request $request)
-    {
-      //該当するNews Modelを取得する
-      $image = Image::find($request->id);
-      //消去する
-      $image->delete();
+      //Userについて
+      //ユーザー登録時にデフォルト値を入れているから、新規作成はしなくていい
+      // 特定ユーザーの情報を取得（既ログイン者）
+      $user = Auth::user();
+      //$userのプロパティにフォームから送られてきた情報を渡す
+      $user->update(); //更新
       
-      return redirect('admin/shop/information');
+      //Checkboxについて
+      // 該当しない項目があるためValidationをかけない
+      //$this->validate($request, question::$rules);
+      // question Modelからデータを取得する
+      $questions = Question::where('id',$user->id)->get();
+      //$questions = Question::find($user->id);
+      // 送信されてきたフォームデータを格納する
+      $question = $request->all();
+      unset($question['_token']);
+      // 該当するデータを上書きして保存する
+      $question->fill($question);
+      $question->save();
+      
+      /*$checkboxes = Checkbox::find($request->id);
+      $checkbox = $request->all();
+      unset($checkbox['_token']);
+      $checkboxes->fill($checkbox);
+      $checkboxes->save();*/
+      
+      // Validationをかける
+      $this->validate($request, Image::$rules);
+      // News Modelからデータを取得する
+      $images = ShopImages::find($request->id);
+      $image = $request->all();
+      // 送信されてきたフォームデータを格納する
+      if ($request->remove == 'true') {
+          $image['image'] = null;
+      } elseif ($request->file('shop_image')) {
+          $path = $request->file('shop_image')->store('public/image');
+          $image['image'] = basename($path);
+      } else {
+          $image['image'] = $images->image;
+      }
+      
+      unset($image['shop_image']);
+      unset($image['remove']);
+      unset($image['_token']);
+      // 該当するデータを上書きして保存する
+      $images->fill($image)->save();
+        
+      return redirect('admin/shop/edit',['shop_image'=>$images,'questions'=>$questions]);
     }
     
     public function choice(Request $request)

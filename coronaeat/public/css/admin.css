@@ -44,6 +44,15 @@ input[type=submit] {
   color: #000;
 }
 
+.btn-sm {
+  color: #ff8c00;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
 .container {
   background-color: #e9ebd5;
   color: #000;
