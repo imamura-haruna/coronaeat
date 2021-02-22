@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','bussiness_hours','location','phone_number','url','comment',
     ];
 
     /**
@@ -52,12 +52,12 @@ class User extends Authenticatable
     
     public function shopimages()
     {
-      return $this->hasMany('App\ShopImages');
+      return $this->hasMany('App\ShopImage');
     }
     
     public function question()
     {
-      return $this->hasMany('App\question');
+      return $this->hasMany('App\Question');
     }
     
     /*public function checkboxes()

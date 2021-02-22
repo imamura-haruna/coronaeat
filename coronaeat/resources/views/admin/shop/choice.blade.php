@@ -26,9 +26,12 @@
                                 <br>押してください。
                             </p>
                             <div class="btn-group">
-                                <form action="{{ action('Admin\ShopController@yes') }}" method="post">
+                                <a href="{{ action('Admin\ShopController@delete') }}" method="get">
                                     <input type="button" class="btn btn-primary" value="はい">
-                                </form>
+                                </a>
+                                <!--<form action="{{ action('Admin\ShopController@delete') }}" method="post">
+                                    <input type="button" class="btn btn-primary" value="はい">
+                                </form>-->
                                 <div class="col-md-2">
                             
                                 </div>
