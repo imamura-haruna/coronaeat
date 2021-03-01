@@ -44,4 +44,6 @@ Route::get('admin/shop/delete','Admin\ShopController@delete')->middleware('auth'
 //新規ボタン
 Route::get('admin/shop/create','Admin\ShopController@create')->middleware('auth');
 
-Route::get('/', 'CustomerController@index');
+/*Route::get('/', 'CustomerController@show')->name('search');*/
+Route::get('/', 'CustomerController@index')->name('search');
+Route::get('/shop', 'CustomerController@show')->name('shop');

@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="background-color: #f7f7eb;">
             <div class="col-md-8">
-                <div class="login-box card">
-                    <div class="login-header card-header mx-auto">{{ __('Login') }}</div>
+                <div class="login-box card" style="background-color: #e9ebd5;">
+                    <div class="login-header card-header mx-auto" style="background-color: #e9ebd5;">{{ __('Login') }}</div>
 
-                    <div class="login-body card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                    <div class="login-body card-body" style="background-color: #e9ebd5;">
+                        <form method="POST" action="{{ route('login') }}" >
                             @csrf
 
                             <div class="form-group row">

@@ -78,37 +78,44 @@
                 <div class="row">
                     <h5>衛生チェック</h5><p>（  <a href="{{ action('Admin\ShopController@edit') }}" role="button" class="btn btn-sm">設定内容の変更</a><!--<button type="button" class="btn btn-sm">設定内容の変更</button>-->  から変更してください）</p>
                     <div class="form-group col-md-12 mx-auto row">
+                        
+                        {{--@if(Auth::user()->questions != null)--}}
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question1 == "1"? 'checked="checked"' : '' }} disabled>　店内は、厚生労働省推奨の換気・保湿を実施しています
+                            <input type="checkbox" name="questions" {{ empty($questions->question1) == "0"? 'checked="checked"' : '' }} disabled>　店内は、厚生労働省推奨の換気・保湿を実施しています
+                        </div>
+                        {{--@php
+                            dd($questions);
+                        @endphp--}}
+                        <div class="custom-checkbox col-md-11 mx-auto row">
+                            <input type="checkbox" name="questions" {{ empty($questions->question2) == "0"? 'checked="checked"' : '' }} disabled>　カウンター席は、パーテーションを設置しています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question2 == "1"? 'checked="checked"' : '' }} disabled>　カウンター席は、パーテーションを設置しています
+                            <input type="checkbox" name="questions" {{ empty($questions->question3) == "0"? 'checked="checked"' : '' }} disabled>　テーブル席は、パーテーションを設置しています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question3 == "1"? 'checked="checked"' : '' }} disabled>　テーブル席は、パーテーションを設置しています
+                            <input type="checkbox" name="questions" {{ empty($questions->question4) == "0"? 'checked="checked"' : '' }} disabled>　使用後の座席は、アルコール消毒をしています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question4 == "1"? 'checked="checked"' : '' }} disabled>　使用後の座席は、アルコール消毒をしています
+                            <input type="checkbox" name="questions" {{ empty($questions->question5) == "0"? 'checked="checked"' : '' }} disabled>　使用後のテーブルは、アルコール消毒をしています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question5 == "1"? 'checked="checked"' : '' }} disabled>　使用後のテーブルは、アルコール消毒をしています
+                            <input type="checkbox" name="questions" {{ empty($questions->question6) == "0"? 'checked="checked"' : '' }} disabled>　従業員は、出勤・退勤時のアルコール消毒をしています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question6 == "1"? 'checked="checked"' : '' }} disabled>　従業員は、出勤・退勤時のアルコール消毒をしています
+                            <input type="checkbox" name="questions" {{ empty($questions->question7) == "0"? 'checked="checked"' : '' }} disabled>　従業員は勤務中、マスクを着用しています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question7 == "1"? 'checked="checked"' : '' }} disabled>　従業員は勤務中、マスクを着用しています
+                            <input type="checkbox" name="questions" {{ empty($questions->question8) == "0"? 'checked="checked"' : '' }} disabled>　従業員の体温・体調管理を徹底しています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question8 == "1"? 'checked="checked"' : '' }} disabled>　従業員の体温・体調管理を徹底しています
+                            <input type="checkbox" name="questions" {{ empty($questions->question9) == "0"? 'checked="checked"' : '' }} disabled>　お客様に、入口にて検温のご協力をお願いしています
                         </div>
                         <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question9 == "1"? 'checked="checked"' : '' }} disabled>　お客様に、入口にて検温のご協力をお願いしています
+                            <input type="checkbox" name="questions" {{ empty($questions->question10) == "0"? 'checked="checked"' : '' }} disabled>　お客様に、入店・退店時のアルコール消毒にご協力をお願いしています
                         </div>
-                        <div class="custom-checkbox col-md-11 mx-auto row">
-                            <input type="checkbox" name="questions" {{ $questions->question10 == "1"? 'checked="checked"' : '' }} disabled>　お客様に、入店・退店時のアルコール消毒にご協力をお願いしています
-                        </div>
+                        
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -187,24 +194,6 @@
                             </div>   
                         </div>  
                     </div>
-                    <!--ユーザー内でのimageを取得する-->
-                    <!--User.php内のpublicfunctionから各migrationファイル内->この場合ShopImages.phpファイル内、のclassにつながっている-->
-                    <!--@if(Auth::user()->shopimages != null)-->
-                    <!--@foreach(Auth::user()->shopimages as $shopimage)-->
-                        <!--<div class="col-md-8 mx-auto row">-->
-                            <!--<div class="images" style="padding:10px;">-->
-                                <!--<form action="" method="post">-->
-                                    <!--<div class="card" name="form">-->
-                                        <!--<img class="card-img-top" src="{{ asset('storage/image/' . $shopimage->image) }}" alt="店内画像">-->
-                                        <!--<div class="card-body">{{ $shopimage->title }}</div>-->
-                                    <!--</div>-->
-                                    <!--{{ csrf_field() }}-->
-                                    <!--<input type="submit" class="btn btn-sm" value="消去">-->
-                                <!--</form>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--@endforeach-->
-                    <!--@endif-->
                 </div>
                 <div class="col-md-12 mx-auto row">
                     <p>

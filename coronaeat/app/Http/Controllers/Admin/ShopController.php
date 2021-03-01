@@ -288,7 +288,7 @@ class ShopController extends Controller
       //消去する
       $user->delete();
       
-      return redirect('auth/login');
+      return redirect('/login');
     }
     
     public function create()

@@ -57,7 +57,7 @@ class User extends Authenticatable
     
     public function question()
     {
-      return $this->hasMany('App\Question');
+      return $this->hasOne('App\Question');
     }
     
     /*public function checkboxes()
