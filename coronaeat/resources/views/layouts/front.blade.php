@@ -59,6 +59,11 @@
                         <ul class="navbar-nav ml-auto">
                         </ul>
                     </div>
+                    <div class="navbar-left">
+                        <form action="{{ action('Admin\ShopController@show') }}" method="get">
+                    	    <input type="submit" class="btn btn-dark" value="店舗専用">
+                    	</form>
+                    </div>
                 </div>
             </nav>
             {{-- ここまでナビゲーションバー --}}
