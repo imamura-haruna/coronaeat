@@ -109,18 +109,31 @@
     <div class="container">
         <hr color="#c0c0c0">
         <div class="row">
-            <div class="form col-md-8  mx-auto mt-3">
-                <form action="{{ action('CustomerController@index')}}" method="get">
-                    <form group="row">
-                        <label class="col-md-1">
-                            検索
-                        </label>
-                        <input type="text" name="search" value="{{ $search }}" placeholder=" 店名">
-                        {{ csrf_field() }}
-                        <input type="submit" class="btn btn-sm btn-secondary" value="search">
-                    </form>
-                </form>
+            <div class="col-md-12 mx-auto row bg-info text-white">
+                <p>
+                  <div style="margin-bottom:20px"></div>
+                </p>
             </div>
+            <div class="col-md-12 mx-auto row bg-info text-white">
+                <hr color="#c0c0c0">
+                <h3>CORONA-EAT</h3>
+                <hr color="#c0c0c0">
+            </div>
+            <div class="col-md-12 mx-auto row bg-info text-white">
+                <p>
+                  <div style="margin-bottom:10px"></div>
+                </p>
+            </div>
+        </div>
+        <hr color="#c0c0c0">
+        <div class="row">
+            <form action="{{ action('CustomerController@index')}}" method="get">
+                <form group="row">
+                    <input type="text" name="search" value="{{ $search }}" placeholder=" 店名">
+                    {{ csrf_field() }}
+                    <input type="submit" class="btn btn-sm btn-info text-white" value="search">
+                </form>
+            </form>
         </div>
         <hr color="#c0c0c0">
         <div class="row">
@@ -132,10 +145,10 @@
                     <div class="linkbox">
                         <div class="row">
                             <div class="text col-md-8 pb-4">
-                                <div class="date mb-1 mt-3">
+                                <div class="date mb-1 mt-3 text-secondary">
                                     {{ $user->updated_at->format('Y年m月d日') }}
                                 </div>
-                                <div class="title">
+                                <div class="title text-info">
                                     <h3>{{ str_limit($user->name, 30) }}</h3>
                                 </div>
                                 <div class="body mt-3">
@@ -152,6 +165,11 @@
                     </div>
                     <hr color="#c0c0c0">
                 @endforeach
+            </div>
+            <div class="col-md-8  mx-auto pb-3">
+                <p>
+                  <div style="margin-bottom:500px"></div>
+                </p>
             </div>
         </div>
     </div>

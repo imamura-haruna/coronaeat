@@ -184,6 +184,12 @@ class ShopController extends Controller
       if($user_form['location'] != null){
         $user->location = $user_form['location'];
       }
+      if($user_form['location2'] != null){
+        $user->location2 = $user_form['location2'];
+      }
+      if($user_form['location3'] != null){
+        $user->location3 = $user_form['location3'];
+      }
       if($user_form['phone_number'] != null){
         $user->phone_number = $user_form['phone_number'];
       }

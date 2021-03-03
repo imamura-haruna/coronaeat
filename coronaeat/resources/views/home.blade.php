@@ -15,6 +15,14 @@
                     @endif
 
                     You are logged in!
+                    <div class="row">
+                        <p>
+                          <div style="margin-bottom:20px"></div>
+                        </p>
+                    </div>
+                    <div class="button-area mx-auto row">
+                        <a href="{{ action('Admin\ShopController@show') }}" role="button" class="btn btn-info mx-auto text-white">start !</a>
+                    </div>
                 </div>
             </div>
         </div>

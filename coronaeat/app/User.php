@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','bussiness_hours','location','phone_number','url','comment',
+        'name', 'email', 'password','bussiness_hours','location','location2','location3','phone_number','url','comment',
     ];
 
     /**
@@ -44,6 +44,8 @@ class User extends Authenticatable
     public static $rules = array(
         'bussiness_hours' => 'required',
         'location' => 'required',
+        'location2' => 'required',
+        'location3' => 'required',
         'phone_number' => 'required',
         'url' => 'required',
         'comment' => 'required',

@@ -22,12 +22,12 @@
                     <div class="card" style="padding:20px;">
                         <div class="card-body">
                             <p class="card-text">
-                                アカウントを消去する場合は<span class="badge badge-primary">はい</span>のボタンを
+                                アカウントを消去する場合は<span class="badge badge-primary">delete</span>のボタンを
                                 <br>押してください。
                             </p>
                             <div class="btn-group">
                                 <a href="{{ action('Admin\ShopController@delete') }}" method="get">
-                                    <input type="button" class="btn btn-primary" value="はい">
+                                    <input type="button" class="btn btn-primary" value="delete">
                                 </a>
                                 <!--<form action="{{ action('Admin\ShopController@delete') }}" method="post">
                                     <input type="button" class="btn btn-primary" value="はい">

@@ -18,7 +18,7 @@ class CustomerController extends Controller
         $search = $request->search;
         if ($search != '') {
           // 検索されたら検索結果を取得する
-          $users = User::where('name', $search)->get();
+          $users = User::where('name', 'LIKE', '%'.$search.'%' )->get();
         } else {
           // それ以外はすべてのニュースを取得する
           $users = User::all()->sortByDesc('updated_at');

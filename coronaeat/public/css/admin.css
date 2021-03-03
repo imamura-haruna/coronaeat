@@ -1,12 +1,12 @@
 body {
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #f7f7eb;
-  color: #fff;
+  background-color: #e6f8fa;
+  color: #000;
 }
 
 .navbar-laravel {
-  background-color: #f7f7eb;
+  background-color: #e6f8fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
@@ -15,7 +15,7 @@ body {
 }
 
 .nav-link {
-  color: #fff !important;
+  color: #000 !important;
 }
 
 .table-dark {
@@ -40,13 +40,18 @@ body {
 }
 
 input[type=submit] {
-  background-color: #ff8c00;
-  color: #000;
+  background-color: #ffa87d;
+  color: #fff;
+}
+
+a[role=button] {
+  background-color: #ffa87d;
+  color: #fff;
 }
 
 .btn-sm {
-  background-color: #ff8c00;
-  color: #000;
+  background-color: #ffa87d;
+  color: #fff;
 }
 
 img {
@@ -55,11 +60,15 @@ img {
 }
 
 .row {
-  background-color: #e9ebd5;
+  background-color: #e6f8fa;
   color: #000;
 }
 
 .button-area {
   text-align: center;
+}
+
+.col-md-8 .mx-auto {
+  background-color: #fff;
 }
 

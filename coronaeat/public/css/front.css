@@ -67,12 +67,12 @@ body {
   width: 100%;
 }
 
-.posts .h5 {
+.posts .h2 {
   text-align: center;
   background-color: #c2c2c0;
 }
 
-.posts .col-md-8 {
-  background-color: #b1e0f0;
+.posts .user {
+  color: #b1e0f0;
 }
 

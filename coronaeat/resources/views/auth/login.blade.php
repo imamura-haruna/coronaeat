@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center" style="background-color: #f7f7eb;">
+        <div class="row justify-content-center" style="background-color: #e6f8fa;">
             <div class="col-md-8">
-                <div class="login-box card" style="background-color: #e9ebd5;">
-                    <div class="login-header card-header mx-auto" style="background-color: #e9ebd5;">{{ __('Login') }}</div>
+                <div class="login-box card" style="background-color: #fff;">
+                    <div class="login-header card-header mx-auto" style="background-color: #fff;">{{ __('Login') }}</div>
 
-                    <div class="login-body card-body" style="background-color: #e9ebd5;">
+                    <div class="login-body card-body" style="background-color: #fff;">
                         <form method="POST" action="{{ route('login') }}" >
                             @csrf
 
-                            <div class="form-group row">
+                            <div class="form-group row" style="background-color: #fff;">
                                 <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-6">
@@ -25,7 +25,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row" style="background-color: #fff;">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row" style="background-color: #fff;">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
                                         <label>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-0" style="background-color: #fff;">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}

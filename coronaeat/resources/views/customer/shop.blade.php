@@ -16,12 +16,32 @@
                           <div style="margin-bottom:100px"></div>
                         </p>
                     </div>
-                    <div class="col-md-12 mx-auto row">
-                        <div class="form-group col-md-12 mx-auto row">
+                    <hr color="#c0c0c0">
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <p>
+                          <div style="margin-bottom:20px"></div>
+                        </p>
+                    </div>
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <hr color="#c0c0c0">
                             <h2>
                                 {{ $user->name }}
                             </h2>
-                        </div>
+                        <hr color="#c0c0c0">
+                    </div>
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <p>
+                          <div style="margin-bottom:10px"></div>
+                        </p>
+                    </div>
+                    <hr color="#c0c0c0">
+                    <div class="col-md-12 mx-auto row">
+                        <p>
+                          <div style="margin-bottom:80px"></div>
+                        </p>
+                    </div>
+                    <div class="col-md-12 mx-auto row">
+                        
                         <div class="form-group col-md-12 mx-auto row">
                             <label for="location">営業時間：　</label>
                             <p>
@@ -37,7 +57,11 @@
                         <div class="form-group col-md-12 mx-auto row">
                             <label for="location">住所：　</label>
                             <p>
-                                {{ $user->location }}
+                                〒 {{ $user->location }}
+                            <br>
+                            <br>    {{ $user->location2 }}
+                            
+                                    {{ $user->location3 }}
                             </p>
                         </div>
                         <div class="form-group col-md-12 mx-auto row">
@@ -47,29 +71,46 @@
                             </p>
                         </div>
                         <div class="form-group col-md-12 mx-auto row">
-                            <div class="alert alert-info col-md-10" role="alert">
-                                <strong>コメント</strong><br>{{ $user->comment }}
-                            </div>
+                            <label for="comment">コメント：　</label>
+                            <p>
+                                {{ $user->comment }}
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-12 mx-auto row">
                         <p>
-                          <div style="margin-bottom:100px"></div>
+                          <div style="margin-bottom:150px"></div>
                         </p>
                     </div>
                 </div>
                 <div class="question">
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <p>
+                          <div style="margin-bottom:20px"></div>
+                        </p>
+                    </div>
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <h4>衛生チェック</h4>
+                    </div>
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <p>
+                          <div style="margin-bottom:10px"></div>
+                        </p>
+                    </div>
+                    <hr color="#c0c0c0">
+                    <div class="col-md-12 mx-auto row">
+                        <p>
+                          <div style="margin-bottom:20px"></div>
+                        </p>
+                    </div>
                     <div class="col-md-12 mx-auto row">
                         <div class="form-group col-md-12 mx-auto row">
-                            <h5>衛生チェック</h5>
-                        </div>
-                        <div class="form-group col-md-12 mx-auto row">
-                            <div class="alert alert-secondary" role="alert">
+                            <p class="text-secondary">
                                 <strong>衛生チェックとは</strong>
                                 <br>店舗側は、以下10項目の衛生対策にチェック式に記入しています。
                                 <br>チェック数が多いほど対策をしていると思われるかもしれませんが、店の構造的にも違いが表れます。
                                 <br>画像を見つつ、コロナ対策の確認を行ってください。
-                            </div>
+                            </p>
                         </div>
                         <div class="col-md-12 mx-auto row">
                             <p>
@@ -112,17 +153,33 @@
                         </div>
                         <div class="form-group col-md-12 mx-auto row">
                             <p>
-                              <div style="margin-bottom:100px"></div>
+                              <div style="margin-bottom:150px"></div>
                             </p> 
                         </div>
                     </div>
                 </div>
                 <div class="image">
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <p>
+                          <div style="margin-bottom:20px"></div>
+                        </p>
+                    </div>
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <h4>コロナ対策画像</h4>
+                    </div>
+                    <div class="col-md-12 mx-auto row bg-info text-white">
+                        <p>
+                          <div style="margin-bottom:10px"></div>
+                        </p>
+                    </div>
+                    <hr color="#c0c0c0">
                     <div class="col-md-12 mx-auto row">
-                        <div class="form-group col-md-12 mx-auto row">
-                            <h5>コロナ対策画像</h5>
+                        <div class="col-md-12 mx-auto row">
+                            <p>
+                              <div style="margin-bottom:20px"></div>
+                            </p>
                         </div>
-                        <div class="form-group col-md-12 mx-auto row">
+                        <div class="form-group col-md-8 mx-auto row">
                             <div class="form-group row">
                                 @if($user->shopimages != null)
                                 @foreach($user->shopimages as $image)
@@ -161,17 +218,9 @@
         </div>
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <div class="btn-group">
-                    <div class="col-md-2">
-                        
-                    </div>
-                    <form action="{{ action('CustomerController@index') }}" method="get">
-                        <input type="submit" class="btn btn-secondary" value="トップページへ">
-                    </form>
-                	<div class="col-md-2">
-                        
-                    </div>
-                </div>
+                <form action="{{ action('CustomerController@index') }}" method="get">
+                    <input type="submit" class="btn btn-info btn-lg btn-block text-white" value="トップページへ">
+                </form>
             </div>
         </div>
         <div class="row">
